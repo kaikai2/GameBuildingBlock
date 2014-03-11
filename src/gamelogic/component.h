@@ -4,6 +4,8 @@
 #include "common/eventdispatcher.h"
 #include "common/atomstring.h"
 
+#include <cassert>
+
 namespace t4
 {
 	namespace gamelogic
@@ -53,6 +55,42 @@ namespace t4
 		inline IComponentFactory::~IComponentFactory()
 		{
 		}
+
+		class CComponentFactory : public IComponentFactory
+		{
+			template<typename ComponentType>
+			class Creator : public IComponentFactory
+			{
+			public:
+				virtual IComponent *Create(CComponentAtom name)
+				{
+					return pool::Alloc<ComponentType>();
+				}
+
+				virtual void Release(IComponent *poNode)
+				{
+					if (ComponentType *poComponent = dynamic_cast<ComponentType *>(poNode))
+					{
+						pool::Free(poComponent);
+					}
+				}
+			};
+		public:
+			template<typename ComponentType>
+			void Register(CComponentAtom name)
+			{
+				IComponentFactory *pFactory = new Creator<ComponentType>();
+				if (!m_mapFactory.insert(std::make_pair(name, pFactory)).second)
+				{
+					delete pFactory;
+				}
+			}
+			virtual IComponent *Create(CComponentAtom name);
+
+			virtual void Release(IComponent *poNode);
+		private:
+			stdext::hash_map<CComponentAtom, IComponentFactory*> m_mapFactory;
+		};
 	}
 }
 

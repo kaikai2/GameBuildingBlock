@@ -83,6 +83,7 @@
     <None Include="..\t4common.props" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="component.cpp" />
     <ClCompile Include="gameobject.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

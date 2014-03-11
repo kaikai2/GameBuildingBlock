@@ -11,14 +11,14 @@ namespace t4
 	typedef CAtomString<Event> CEventAtom;
 }
 
-namespace stdext
-{
-	template<> inline
-		size_t hash_value(const t4::CEventAtom& _Keyval)
-	{	// hash _Keyval to size_t value one-to-one
-			return ((size_t)_Keyval ^ _HASH_SEED);
-		}
-}
+//namespace stdext
+//{
+//	template<> inline
+//		size_t hash_value(const t4::CEventAtom& _Keyval)
+//	{	// hash _Keyval to size_t value one-to-one
+//			return ((size_t)_Keyval ^ _HASH_SEED);
+//		}
+//}
 
 namespace t4
 {

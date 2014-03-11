@@ -74,7 +74,7 @@ namespace t4
 		CDynamicPool<ElementType> &Pool()
 		{
 			static CDynamicPool<ElementType> s_pool;
-			return s_poo;
+			return s_pool;
 		}
 
 		template<typename ElementType>
@@ -86,7 +86,7 @@ namespace t4
 		template<typename ElementType>
 		ElementType* Alloc()
 		{
-			Pool<ElementType>().Alloc();
+			return Pool<ElementType>().Alloc();
 		}
 		template<typename ElementType>
 		void Free(ElementType *poNode)
