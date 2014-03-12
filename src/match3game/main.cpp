@@ -35,7 +35,6 @@ int CALLBACK WinMain(
 	_In_  int nCmdShow
 	)
 {
-	foo();
 	CComponentFactory componentFactory;
 	CGameObjectFactory gameObjectFactory(componentFactory);
 

@@ -3,6 +3,7 @@
 
 #include "common/eventdispatcher.h"
 #include "common/atomstring.h"
+#include "common/pool.h"
 
 #include <cassert>
 
