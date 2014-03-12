@@ -44,6 +44,7 @@ namespace t4
 				}
 				ElementType *poNode = m_listFree.front();
 				m_listFree.pop_front();
+				new (poNode)ElementType();
 				return poNode;
 			}
 			void Free(ElementType *poNode)

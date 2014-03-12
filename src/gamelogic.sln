@@ -10,6 +10,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gamelogic", "gamelogic\game
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "common", "common\common.vcxproj", "{B1F0365F-FF1C-476E-91EA-B3786AD4827B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "match3game", "match3game\match3game.vcxproj", "{071D52E3-3A68-4F7E-8B69-F34AD33A3C44}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B51DA713-B882-4C62-86AE-6C4E9344EEDC} = {B51DA713-B882-4C62-86AE-6C4E9344EEDC}
+		{B1F0365F-FF1C-476E-91EA-B3786AD4827B} = {B1F0365F-FF1C-476E-91EA-B3786AD4827B}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -24,6 +30,10 @@ Global
 		{B1F0365F-FF1C-476E-91EA-B3786AD4827B}.Debug|Win32.Build.0 = Debug|Win32
 		{B1F0365F-FF1C-476E-91EA-B3786AD4827B}.Release|Win32.ActiveCfg = Release|Win32
 		{B1F0365F-FF1C-476E-91EA-B3786AD4827B}.Release|Win32.Build.0 = Release|Win32
+		{071D52E3-3A68-4F7E-8B69-F34AD33A3C44}.Debug|Win32.ActiveCfg = Debug|Win32
+		{071D52E3-3A68-4F7E-8B69-F34AD33A3C44}.Debug|Win32.Build.0 = Debug|Win32
+		{071D52E3-3A68-4F7E-8B69-F34AD33A3C44}.Release|Win32.ActiveCfg = Release|Win32
+		{071D52E3-3A68-4F7E-8B69-F34AD33A3C44}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

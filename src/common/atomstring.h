@@ -29,8 +29,8 @@ namespace t4
 			auto it = s_id.mapName2Id.find(szName);
 			if (it == s_id.mapName2Id.end())
 			{
-				it = s_id.mapName2Id.insert(it, std::make_pair(szName, vecAllNames.size()));
-				vecAllNames.push_back(szName);
+				it = s_id.mapName2Id.insert(it, std::make_pair(szName, s_id.vecAllNames.size()));
+				s_id.vecAllNames.push_back(szName);
 			}
 			return it->second;
 		}
@@ -52,13 +52,17 @@ namespace t4
 	class CAtomString
 	{
 	public:
-		CAtomString(const char *szName) : m_nId(alloc_id<Type>(szName))
+		CAtomString() : m_nId(-1)
+		{
+
+		}
+		CAtomString(const char *szName) : m_nId(internal::alloc_id<Type>(szName))
 		{
 
 		}
 		std::string Name() const
 		{
-			return getname<Type>(m_nId);
+			return internal::getname<Type>(m_nId);
 		}
 		operator size_t() const
 		{

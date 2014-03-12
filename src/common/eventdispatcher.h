@@ -2,6 +2,7 @@
 #define _Common_EventDispatcher_H_
 
 #include "atomstring.h"
+#include "cast.h"
 
 #include <hash_map>
 
@@ -28,13 +29,6 @@ namespace t4
 		virtual ~IEventHandler() = 0;
 
 		typedef void (IEventHandler::* Handler)(CEventAtom key, const void *attach, int attachLen);
-
-		void init()
-		{
-			Handler t = &IEventHandler::foo;
-		}
-		void foo(CEventAtom key, const void *attach, int attachLen);
-
 	};
 
 	inline IEventHandler::~IEventHandler()
@@ -47,6 +41,12 @@ namespace t4
 	public:
 		virtual ~IEventDispatcher() = 0;
 
+		template<typename EventHandler, typename Handler>
+		void Bind(CEventAtom key, EventHandler *poHandler, Handler pFunc)
+		{
+			Bind(key, strong_cast<IEventHandler*>(poHandler),
+				strong_cast<IEventHandler::Handler>(pFunc));
+		}
 		virtual void Bind(CEventAtom key, IEventHandler *poHandler, IEventHandler::Handler pFunc) = 0;
 
 		virtual void Send(CEventAtom key, const void *pAttach, int attachLen) = 0;
@@ -59,6 +59,7 @@ namespace t4
 	class CEventManager : public IEventDispatcher
 	{
 	public:
+
 		virtual void Bind(CEventAtom key, IEventHandler *poHandler, IEventHandler::Handler pFunc)
 		{
 			m_mapHandlers.insert(std::make_pair(key, Callback() = {poHandler, pFunc }));

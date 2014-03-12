@@ -15,26 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="t4type.h">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="eventdispatcher.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="atomstring.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="pool.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="cast.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\t4common.props" />
+    </ClCompile>
   </ItemGroup>
 </Project>
