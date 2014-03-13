@@ -44,6 +44,11 @@ namespace t4
 		}
 		void CGameObjectFactory::Release(CGameObject &oObj)
 		{
+			for (size_t i = 0; i < oObj.m_vecComponents.size(); ++i)
+			{
+				m_oComponentFactory.Release(oObj.m_vecComponents[i]);
+			}
+			oObj.m_vecComponents.clear();
 			pool::Free(&oObj);
 		}
 	}

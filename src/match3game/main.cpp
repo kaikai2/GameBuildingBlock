@@ -22,7 +22,7 @@ public:
 
 	void foo(CEventAtom key, const void *attach, int attachLen)
 	{
-
+		assert(attach == 0 && attachLen == 2);
 	}
 };
 CComponentAtom SomeWhatComponent::asName("SomeWhat");
@@ -40,9 +40,11 @@ int CALLBACK WinMain(
 
 	componentFactory.Register<SomeWhatComponent>(SomeWhatComponent::asName);
 
+	gameObjectFactory.Define(atomBrick).With(SomeWhatComponent::asName);
+
 	if (CGameObject *poBrick = gameObjectFactory.Create(atomBrick))
 	{
-		
+		poBrick->Send(CEventAtom("someEvent"), 0, 2);
 		gameObjectFactory.Release(*poBrick);
 	}
 

@@ -8,6 +8,8 @@
 #include "common/atomstring.h"
 
 #include <vector>
+#include <set>
+#include <hash_map>
 
 namespace t4
 {
@@ -40,6 +42,10 @@ namespace t4
 				return it->second;
 			}
 
+			void Send(CEventAtom key, const void *pAttach, int len)
+			{
+				m_oEventMgr.Send(key, pAttach, len);
+			}
 		private:
 			void Attach(IComponent &oComponent)
 			{
@@ -66,6 +72,33 @@ namespace t4
 			}
 			CGameObject *Create(CGameObjectAtom name);
 			void Release(CGameObject &oObj);
+
+			struct Definer
+			{
+				Definer(std::vector<CComponentAtom> &v) : vec(v)
+				{
+
+				}
+				Definer &With(CComponentAtom name)
+				{
+					if (setName.insert(name).second)
+					{
+						vec.push_back(name);
+					}
+					else
+					{
+						assert(false && "duplicated component not allowed");
+					}
+					return *this;
+				}
+				std::vector<CComponentAtom> &vec;
+				std::set<CComponentAtom> setName;
+			};
+			Definer Define(CGameObjectAtom name)
+			{
+				Definer d(m_mapDefines[name]);
+				return d;
+			}
 		};
 	}
 }
