@@ -80,6 +80,7 @@
   <ItemGroup>
     <ClInclude Include="component.h" />
     <ClInclude Include="gameobject.h" />
+    <ClInclude Include="scene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\t4common.props" />
@@ -87,6 +88,7 @@
   <ItemGroup>
     <ClCompile Include="component.cpp" />
     <ClCompile Include="gameobject.cpp" />
+    <ClCompile Include="scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\common\common.vcxproj">
