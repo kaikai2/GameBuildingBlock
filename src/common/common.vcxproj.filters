@@ -37,4 +37,9 @@
   <ItemGroup>
     <None Include="..\t4common.props" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="eventdispatcher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>

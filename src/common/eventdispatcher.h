@@ -10,19 +10,7 @@ namespace t4
 {
 	struct Event{};
 	typedef CAtomString<Event> CEventAtom;
-}
 
-//namespace stdext
-//{
-//	template<> inline
-//		size_t hash_value(const t4::CEventAtom& _Keyval)
-//	{	// hash _Keyval to size_t value one-to-one
-//			return ((size_t)_Keyval ^ _HASH_SEED);
-//		}
-//}
-
-namespace t4
-{
 	class IEventHandler
 	{
 	public:
@@ -60,23 +48,9 @@ namespace t4
 	{
 	public:
 
-		virtual void Bind(CEventAtom key, IEventHandler *poHandler, IEventHandler::Handler pFunc)
-		{
-			m_mapHandlers.insert(std::make_pair(key, Callback() = {poHandler, pFunc }));
-		}
+		virtual void Bind(CEventAtom key, IEventHandler *poHandler, IEventHandler::Handler pFunc);
 
-		virtual void Send(CEventAtom key, const void *pAttach, int attachLen)
-		{
-			auto cc = m_mapHandlers.equal_range(key);
-			if (cc.first != cc.second)
-			{
-				for (auto i = cc.first; i != cc.second; ++i)
-				{
-					auto &cb = i->second;
-					(cb.obj->*(cb.func))(key, pAttach, attachLen);
-				}
-			}
-		}
+		virtual void Send(CEventAtom key, const void *pAttach, int attachLen);
 	private:
 		struct Callback
 		{
