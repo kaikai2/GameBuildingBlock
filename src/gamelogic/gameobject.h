@@ -6,6 +6,7 @@
 #include "common/t4type.h"
 #include "common/eventdispatcher.h"
 #include "common/atomstring.h"
+#include "common/attributeset.h"
 
 #include <vector>
 #include <set>
@@ -59,6 +60,7 @@ namespace t4
 			CEventManager m_oEventMgr;
 			CGameObjectAtom m_atomTypeName;
 			UINT32 m_dwIdentity;
+			CAttributeSet m_oAttributeSet;
 		};
 
 		class CGameObjectFactory

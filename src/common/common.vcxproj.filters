@@ -18,20 +18,23 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="t4type.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="eventdispatcher.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="attributeset.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="atomstring.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="pool.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cast.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="eventdispatcher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="t4type.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -40,6 +43,9 @@
   <ItemGroup>
     <ClCompile Include="eventdispatcher.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="attributeset.cpp">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

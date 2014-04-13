@@ -79,6 +79,13 @@ namespace t4
 	private:
 		size_t m_nId;
 	};
+
+	template<typename Type, typename AtomStringType>
+	AtomStringType Type2Atom()
+	{
+		static AtomStringType asName(typeid(Type).name());
+		return asName;
+	}
 }
 
 #endif//_Common_AtomString_H_
