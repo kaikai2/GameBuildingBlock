@@ -18,20 +18,27 @@ public:
 
 	virtual void OnAttach(IEventDispatcher &oEventDispatcher)
 	{
+		GameObject().AttributeSet().RegisterHolder(*this);
+
 		oEventDispatcher.Bind(CEventAtom("someEvent"), this, &SomeWhatComponent::foo);
+		Register(&SomeWhatComponent::attr);
 	}
 
 	void foo(CEventAtom key, const void *attach, int attachLen)
 	{
 		assert(attach == 0 && attachLen == 2);
 	}
+
+	struct Attribute
+	{
+		int a;
+		std::string s;
+	}attr;
 };
 CComponentAtom SomeWhatComponent::asName("SomeWhat");
 
 CGameObjectAtom atomBrick("brick");
 
-#undef min
-#undef max
 
 int CALLBACK WinMain(
 	_In_  HINSTANCE hInstance,

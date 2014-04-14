@@ -47,9 +47,17 @@ namespace t4
 			{
 				m_oEventMgr.Send(key, pAttach, len);
 			}
+
+			CAttributeSet &AttributeSet()
+			{
+				return m_oAttributeSet;
+			}
 		private:
 			void Attach(IComponent &oComponent)
 			{
+				oComponent.m_poGameObject = this;
+				CAttributeHolderAtom asAttr(oComponent.Name().Name().c_str());
+				m_oAttributeSet.RegisterHolder(asAttr, oComponent);
 				m_vecComponents.push_back(&oComponent);
 				m_mapComponents[oComponent.Name()] = &oComponent;
 				oComponent.OnAttach(m_oEventMgr);

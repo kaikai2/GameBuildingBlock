@@ -4,6 +4,7 @@
 #include "common/eventdispatcher.h"
 #include "common/atomstring.h"
 #include "common/pool.h"
+#include "common/attributeset.h"
 
 #include <cassert>
 
@@ -16,7 +17,7 @@ namespace t4
 
 		class CGameObject;
 
-		class IComponent
+		class IComponent : protected IAttributeHolder
 		{
 		public:
 			virtual ~IComponent() = 0;
@@ -35,6 +36,9 @@ namespace t4
 			}
 
 		private:
+			friend class CGameObject;
+			friend class CAttributeSet;
+
 			CGameObject *m_poGameObject;
 		};
 
